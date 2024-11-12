@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static', filename = 'style.css')}}">
+    <title>Cálculo de Crédito de Carbono</title>
+</head>
+<body>
+    <header>
+        <a href="#Home"><img src="../static/Img/Logo simples circular esmaltaria preto.png" alt="" id="Logo"></a>
+        <p>Calcular Crédito de Carbono Utilizando Metodologia Energetica</p>
+        <div id="opcoes">
+            <a class="opcoes" href="#Home">Home</a>
+            <a class="opcoes" href="#Introducao">Sobre</a>
+            <a class="opcoes" href="#calculadora">Calcular</a>
+        </div>
+    </header>
+
+    <section id="Home">
+        <h1>Bem Vindo ao seu <br> Calculador de Crédito <br>de Carbono</h1>
+    </section>
+
+    <section id="Introducao">
+            <div id="OqueE" class="Card_Info">
+                <h2>O que é crédito de carbono?</h2>
+                <p>Crédito de carbono é uma unidade de medida que 
+                    representa a redução de uma tonelada de dióxido 
+                    de carbono (CO₂) ou gases de efeito estufa (GEEs)
+                     na atmosfera. Empresas ou países que emitem esses
+                     gases podem "comprar" créditos para compensar suas 
+                     emissões, apoiando projetos que reduzem ou evitam
+                     emissões, como reflorestamento e energia renovável.
+                    Assim, os créditos incentivam práticas sustentáveis
+                     e ajudam a combater as mudanças climáticas.</p>
+            </div>
+            <div id="Historia" class="Card_Info">
+                <h2>Sua Origem</h2>
+                <p>
+                    A origem dos créditos de carbono está relacionada ao 
+                    Protocolo de Quioto, um tratado internacional assinado 
+                    em 1997, no qual países se comprometeram a reduzir suas 
+                    emissões de gases de efeito estufa. Para ajudar a alcançar 
+                    essas metas, o protocolo criou um sistema de compensação, 
+                    permitindo que países ou empresas que reduzem suas emissões 
+                    gerem créditos de carbono. Esses créditos podem ser vendidos 
+                    a outras organizações que precisam compensar suas emissões, 
+                    promovendo uma economia de baixo carbono e incentivando 
+                    investimentos em projetos sustentáveis ao redor do mundo.</p>
+            </div>
+            <div id="Energia" class="Card_Info">
+                <h2>Crédito com Energia</h2>
+                <p>O cálculo de créditos de carbono com base no consumo de energia elétrica 
+                    é importante porque permite que empresas e indivíduos avaliem e compensem 
+                    o impacto ambiental do uso de eletricidade. Como a geração de energia 
+                    elétrica é uma das principais fontes de emissão de gases de efeito estufa, 
+                    esse método incentiva a redução do consumo e o investimento em fontes de 
+                    energia limpa. Assim, ele ajuda na transição para uma economia de baixo 
+                    carbono e na mitigação das mudanças climáticas.</p>
+            </div>
+            <div id="ComoCalcular" class="Card_Info">
+                <h2>Como calcular?</h2>
+                <p>O cálculo de créditos de carbono começa com a definição de uma linha de base,
+                 que representa a quantidade de gases de efeito estufa (GEE) que seria emitida
+                  caso o projeto sustentável não existisse. Em seguida, é medida a redução de 
+                  emissões realizada pelo projeto, comparando com a linha de base. Cada tonelada de 
+                  CO₂ ou equivalente reduzido gera um crédito de carbono. Após isso, uma auditoria 
+                  verifica a precisão do cálculo e certifica os créditos, que então podem ser usados 
+                  para compensação de emissões ou vendidos no mercado, incentivando práticas sustentáveis. <br>
+                  Crédito de Carbono = Consumo de Energia(kWh) X Fator dee Emissão(kg CO₂/kWh)/1000
+                </p>
+                </div>
+    </section>
+
+    
+    <section id="Container_Calculadora">
+        <div id="Sobre">
+            <h2>Fontes de Energia</h2>
+            <div class="container_Cards">
+                <div class="card">
+                    <h3>Carvão</h3>
+                    <p>Emissões: méida de 82 CO₂/kWh.</p>
+                </div>
+                <div class="card">
+                    <h3>Gás Natural</h3>
+                    <p>Emissões: média de 49 CO₂/kWh.</p>
+                </div>
+                <div class="card">
+                    <h3>Hidrelétrica</h3>
+                    <p>Emissões: média de 24 CO₂/kWh.</p>
+                </div>
+                <div class="card">
+                    <h3>Nuclear</h3>
+                    <p>Emissões: média de 12 CO₂/kWh.</p>
+                </div>
+                <div class="card">
+                    <h3>Solar</h3>
+                    <p>Emissões: média de 48 CO₂/kWh.</p>
+                </div>
+                <div class="card">
+                    <h3>Eólica</h3>
+                    <p>Emissões: média de 12 CO₂/kWh.</p>
+                </div>
+            </div>
+        </div>
+        <div id="calculadora">
+            <h1>Cálculo de Crédito de Carbono</h1>
+            <form action="/calculo" method="POST">
+                <label for="energiaReferencia">Energia consumida anteriormente(MWh):</label>
+                <input type="number" name="energiaReferencia" placeholder="Energia consumida" required>
+
+                <label for="fatorEmissao">Fator de emissão anterior(tCO₂e/MWh):</label>
+                <input type="number" name="fatorEmissao" step="1" placeholder="Ex: 90" required>
+
+                <label for="energiaProjeto">Energia consumida atual(MWh):</label>
+                <input type="number" name="energiaProjeto" placeholder="Energia no projeto" required>
+
+                <label for="fatorEmissaoProjeto">Fator de emissão atual(tCO₂e/MWh):</label>
+                <input type="number" name="fatorEmissaoProjeto" step="1" placeholder="Ex: 0 (para energia renovável)" required>
+
+                <button type="submit">Calcular Crédito de Carbono</button>
+            </form>
+            
+            {% if resultado is not none %}
+            <div class="resultado">
+                Redução de emissões: {{ resultado }} toneladas de CO₂
+            </div>
+            {% endif %}
+        </div>
+    </section>
+
+    <footer style="background-color: #333; color: #fff; padding: 20px; text-align: center;">
+        <p>
+            Este site utiliza dados de fontes renomadas para fornecer informações precisas e atualizadas sobre fatores de emissão e pegada de carbono de diferentes fontes de energia. 
+            Baseamo-nos em diretrizes do <a href="https://pt.wikipedia.org/wiki/Fator_de_emissão#:~:text=O%20factor%20de%20emissão%20é,fontes%20de%20poluição%20do%20ar" style="color: #4caf50;">IPCC</a>, 
+            numeros de <a href="https://en.wikipedia.org/wiki/Life-cycle_greenhouse_gas_emissions_of_energy_sources" style="color: #4caf50;">Wikipedia</a>, 
+            e <a href="https://www.iea.org/data-and-statistics/data-product/emissions-factors-2023" style="color: #4caf50;">Agência Internacional de Energia (IEA)</a>. 
+            No Brasil, seguimos as orientações do <a href="https://www.gov.br/mcti/pt-br/acompanhe-o-mcti/sirene" style="color: #4caf50;">MCTI</a> 
+            para garantir o alinhamento com as práticas nacionais de sustentabilidade.
+        </p>
+        <p>© <script>document.write(new Date().getFullYear());</script> | Todos os direitos reservados.</p>
+    </footer>
+</body>
+</html>
