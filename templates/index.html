@@ -1,82 +1,71 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{url_for('static', filename = 'style.css')}}">
-    <title>Cálculo de Crédito de Carbono</title>
+<html lang="pt-BR"><!-- Linguagem da pagina -->
+<head> <!-- -->
+    <meta charset="UTF-8">   <!-- Definição de caracteres -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  <!-- Responsividade do site -->
+    <link rel="stylesheet" href="{{url_for('static', filename = 'style.css')}}">  <!-- Conecta o css a página html -->
+    <title>Cálculo de Crédito de Carbono</title>  <!-- Titulo do site -->
 </head>
 <body>
-    <header>
-        <a href="#Home"><img src="../static/Img/Logo simples circular esmaltaria preto.png" alt="" id="Logo"></a>
-        <p>Calcular Crédito de Carbono Utilizando Metodologia Energetica</p>
-        <div id="opcoes">
-            <a class="opcoes" href="#Home">Home</a>
-            <a class="opcoes" href="#Introducao">Sobre</a>
-            <a class="opcoes" href="#calculadora">Calcular</a>
+    <header><!-- Cabeçalho da página-->
+        <a href="#Home"><img src="../static/Img/Logo simples circular esmaltaria preto.png" alt="" id="Logo"></a><!-- Ao clicar no Logotipo será transferido para o inicio da pagina -->
+        <p>Calcular Crédito de Carbono Utilizando Metodologia Energetica</p><!-- Texto -->
+        <div id="opcoes"> <!-- divisão para os botoes superiores -->
+            <a class="opcoes" href="#Home">Home</a> <!-- Move para o inicio (#Home) -->
+            <a class="opcoes" href="#Introducao">Sobre</a> <!-- Move para o Sobre (#Introducao) -->
+            <a class="opcoes" href="#calculadora">Calcular</a> <!-- Move para a Calculadora (#calculadora) -->
         </div>
     </header>
 
-    <section id="Home">
-        <h1>Bem Vindo ao seu <br> Calculador de Crédito <br>de Carbono</h1>
+    <section id="Home"> <!-- Sessão Home -->
+        <h1>Bem Vindo ao seu <br> Calculador de Crédito <br>de Carbono</h1><!-- Boas vindas ao site -->
     </section>
 
-    <section id="Introducao">
+    <section id="Introducao"> <!-- sessão de introdução #Sobre explicando os fundamentos do credito de carbono-->
             <div id="OqueE" class="Card_Info">
-                <h2>O que é crédito de carbono?</h2>
-                <p>Crédito de carbono é uma unidade de medida que 
-                    representa a redução de uma tonelada de dióxido 
-                    de carbono (CO₂) ou gases de efeito estufa (GEEs)
-                     na atmosfera. Empresas ou países que emitem esses
-                     gases podem "comprar" créditos para compensar suas 
-                     emissões, apoiando projetos que reduzem ou evitam
-                     emissões, como reflorestamento e energia renovável.
-                    Assim, os créditos incentivam práticas sustentáveis
-                     e ajudam a combater as mudanças climáticas.</p>
+                <h2>O que é crédito de carbono?</h2> <!-- titulo o card -->
+                <p>O crédito de carbono é uma forma de medir a redução de gases de efeito estufa, como o CO₂, na atmosfera. 
+                    Cada crédito corresponde a uma tonelada de CO₂ que deixou de ser emitida. Empresas e países que produzem esses gases podem comprar créditos para compensar suas emissões, 
+                    ajudando a financiar projetos que contribuem para reduzir ou evitar novas emissões, como iniciativas de reflorestamento e uso de energias renováveis. 
+                    Dessa forma, os créditos de carbono incentivam práticas mais sustentáveis e colaboram na luta contra as mudanças climáticas.</p>
             </div>
             <div id="Historia" class="Card_Info">
                 <h2>Sua Origem</h2>
                 <p>
                     A origem dos créditos de carbono está relacionada ao 
-                    Protocolo de Quioto, um tratado internacional assinado 
-                    em 1997, no qual países se comprometeram a reduzir suas 
-                    emissões de gases de efeito estufa. Para ajudar a alcançar 
-                    essas metas, o protocolo criou um sistema de compensação, 
-                    permitindo que países ou empresas que reduzem suas emissões 
+                    Protocolo de Quioto, que foi um tratado internacional assinado 
+                    em 1997, em que países se comprometeram a reduzir suas 
+                    emissões de gases do efeito estufa. O protocolo criou um sistema de compensação, 
+                    permitindo que países ou empresas que reduzirem suas emissões 
                     gerem créditos de carbono. Esses créditos podem ser vendidos 
-                    a outras organizações que precisam compensar suas emissões, 
-                    promovendo uma economia de baixo carbono e incentivando 
-                    investimentos em projetos sustentáveis ao redor do mundo.</p>
+                    para outras organizações, ajudando uma economia de baixo carbono e incentivando 
+                    investimentos em projetos sustentáveis.</p>
             </div>
             <div id="Energia" class="Card_Info">
                 <h2>Crédito com Energia</h2>
-                <p>O cálculo de créditos de carbono com base no consumo de energia elétrica 
-                    é importante porque permite que empresas e indivíduos avaliem e compensem 
-                    o impacto ambiental do uso de eletricidade. Como a geração de energia 
+                <p>Esse calculo é importante pois permite que empresas e indivíduos avaliem e compensem 
+                    o impacto ambiental e preveni-lo. Como a geração de energia 
                     elétrica é uma das principais fontes de emissão de gases de efeito estufa, 
                     esse método incentiva a redução do consumo e o investimento em fontes de 
-                    energia limpa. Assim, ele ajuda na transição para uma economia de baixo 
-                    carbono e na mitigação das mudanças climáticas.</p>
+                    energia limpa. Assim, ele ajuda na transição para uma economia mais sustentavel 
+                    e na diminuição das mudanças climáticas.</p>
             </div>
             <div id="ComoCalcular" class="Card_Info">
                 <h2>Como calcular?</h2>
-                <p>O cálculo de créditos de carbono começa com a definição de uma linha de base,
-                 que representa a quantidade de gases de efeito estufa (GEE) que seria emitida
-                  caso o projeto sustentável não existisse. Em seguida, é medida a redução de 
-                  emissões realizada pelo projeto, comparando com a linha de base. Cada tonelada de 
-                  CO₂ ou equivalente reduzido gera um crédito de carbono. Após isso, uma auditoria 
-                  verifica a precisão do cálculo e certifica os créditos, que então podem ser usados 
-                  para compensação de emissões ou vendidos no mercado, incentivando práticas sustentáveis. <br>
+                <p>O cálculo de créditos de carbono começa definindo uma linha de base, que é a quantidade de gases de efeito estufa (GEE) 
+                    que seria emitida se o projeto sustentável não existisse. Depois, medem-se as emissões reduzidas pelo projeto comparando com essa linha de base. 
+                    Cada tonelada de CO₂ (ou equivalente) reduzida vira um crédito de carbono. Por fim, uma auditoria confirma o 
+                    cálculo e certifica os créditos, que podem ser usados para compensar emissões ou vendidos no mercado, incentivando práticas sustentáveis.<br>
                   Crédito de Carbono = Consumo de Energia(kWh) X Fator dee Emissão(kg CO₂/kWh)/1000
                 </p>
                 </div>
     </section>
 
     
-    <section id="Container_Calculadora">
-        <div id="Sobre">
+    <section id="Container_Calculadora"> <!-- sessão da calculadora-->
+        <div id="Sobre"> <!-- divisão para organização dos cards de informações para o usuario -->
             <h2>Fontes de Energia</h2>
-            <div class="container_Cards">
+            <div class="container_Cards"> <!-- cards informativos  -->
                 <div class="card">
                     <h3>Carvão</h3>
                     <p>Emissões: méida de 82 CO₂/kWh.</p>
@@ -103,11 +92,11 @@
                 </div>
             </div>
         </div>
-        <div id="calculadora">
+        <div id="calculadora"> <!-- Organização para o formulario -->
             <h1>Cálculo de Crédito de Carbono</h1>
-            <form action="/calculo" method="POST">
-                <label for="energiaReferencia">Energia consumida anteriormente(MWh):</label>
-                <input type="number" name="energiaReferencia" placeholder="Energia consumida" required>
+            <form action="/calculo" method="POST"><!-- Formulario onde vai receber deiversos inputs para envio de dados -->
+                <label for="energiaReferencia">Energia consumida anteriormente(MWh):</label><!-- titulo e referencia ao input adequado -->
+                <input type="number" name="energiaReferencia" placeholder="Energia consumida" required> <!-- recebe e transfere dados do input para o back via nome depois do submit -->
 
                 <label for="fatorEmissao">Fator de emissão anterior(tCO₂e/MWh):</label>
                 <input type="number" name="fatorEmissao" step="1" placeholder="Ex: 90" required>
@@ -118,12 +107,12 @@
                 <label for="fatorEmissaoProjeto">Fator de emissão atual(tCO₂e/MWh):</label>
                 <input type="number" name="fatorEmissaoProjeto" step="1" placeholder="Ex: 0 (para energia renovável)" required>
 
-                <button type="submit">Calcular Crédito de Carbono</button>
+                <button type="submit">Calcular Crédito de Carbono</button> <!-- Envio de dados -->
             </form>
             
-            {% if resultado is not none %}
-            <div class="resultado">
-                Redução de emissões: {{ resultado }} toneladas de CO₂
+            {% if resultado is not none %} <!-- Abertura para a vinculação do html com o Flask para uso de variaveis-->
+            <div class="resultado"> <!-- div para o resultado dado após o submit dos dados -->
+                Redução de emissões: {{ resultado }} toneladas de CO₂  <!-- Aparição da variavel resultado no html -->
             </div>
             {% endif %}
         </div>
@@ -136,9 +125,9 @@
             numeros de <a href="https://en.wikipedia.org/wiki/Life-cycle_greenhouse_gas_emissions_of_energy_sources" style="color: #4caf50;">Wikipedia</a>, 
             e <a href="https://www.iea.org/data-and-statistics/data-product/emissions-factors-2023" style="color: #4caf50;">Agência Internacional de Energia (IEA)</a>. 
             No Brasil, seguimos as orientações do <a href="https://www.gov.br/mcti/pt-br/acompanhe-o-mcti/sirene" style="color: #4caf50;">MCTI</a> 
-            para garantir o alinhamento com as práticas nacionais de sustentabilidade.
+            para garantir o alinhamento com as práticas nacionais de sustentabilidade. <!-- Algumas das fontes utilizadas -->
         </p>
-        <p>© <script>document.write(new Date().getFullYear());</script> | Todos os direitos reservados.</p>
+        <p>© <script>document.write(new Date().getFullYear());</script> | Todos os direitos reservados.</p><!-- Copy -->
     </footer>
 </body>
 </html>
