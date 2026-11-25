@@ -8,8 +8,8 @@
 </head>
 <body>
     <header><!-- Cabeçalho da página-->
-        <a href="#Home"><img src="../static/Img/Logo simples circular esmaltaria preto.png" alt="" id="Logo"></a><!-- Ao clicar no Logotipo será transferido para o inicio da pagina -->
-        <p>Calcular Crédito de Carbono Utilizando Metodologia Energetica</p><!-- Texto -->
+        <a href="#Home"><img src="{{ url_for('static', filename='Img/Logo simples circular esmaltaria preto.png') }}" alt="Voltar ao início" id="Logo"></a><!-- Ao clicar no Logotipo será transferido para o inicio da pagina -->
+        <p>Calcular Crédito de Carbono Utilizando Metodologia Energética</p><!-- Texto -->
         <div id="opcoes"> <!-- divisão para os botoes superiores -->
             <a class="opcoes" href="#Home">Home</a> <!-- Move para o inicio (#Home) -->
             <a class="opcoes" href="#Introducao">Sobre</a> <!-- Move para o Sobre (#Introducao) -->
@@ -43,12 +43,12 @@
             </div>
             <div id="Energia" class="Card_Info">
                 <h2>Crédito com Energia</h2>
-                <p>Esse calculo é importante pois permite que empresas e indivíduos avaliem e compensem 
-                    o impacto ambiental e preveni-lo. Como a geração de energia 
-                    elétrica é uma das principais fontes de emissão de gases de efeito estufa, 
-                    esse método incentiva a redução do consumo e o investimento em fontes de 
-                    energia limpa. Assim, ele ajuda na transição para uma economia mais sustentavel 
-                    e na diminuição das mudanças climáticas.</p>
+                <p>Esse cálculo é importante porque permite que empresas e indivíduos avaliem, compensem
+                    e previnam seu impacto ambiental. Como a geração de energia
+                    elétrica é uma das principais fontes de emissão de gases de efeito estufa,
+                    esse método incentiva a redução do consumo e o investimento em fontes de
+                    energia limpa. Assim, ele ajuda na transição para uma economia mais sustentável
+                    e no combate às mudanças climáticas.</p>
             </div>
             <div id="ComoCalcular" class="Card_Info">
                 <h2>Como calcular?</h2>
@@ -56,7 +56,7 @@
                     que seria emitida se o projeto sustentável não existisse. Depois, medem-se as emissões reduzidas pelo projeto comparando com essa linha de base. 
                     Cada tonelada de CO₂ (ou equivalente) reduzida vira um crédito de carbono. Por fim, uma auditoria confirma o 
                     cálculo e certifica os créditos, que podem ser usados para compensar emissões ou vendidos no mercado, incentivando práticas sustentáveis.<br>
-                  Crédito de Carbono = Consumo de Energia(kWh) X Fator dee Emissão(kg CO₂/kWh)/1000
+                  Emissão (t CO₂) = Consumo de Energia (MWh) × Fator de Emissão (g CO₂e/kWh) ÷ 1000
                 </p>
                 </div>
     </section>
@@ -65,54 +65,60 @@
     <section id="Container_Calculadora"> <!-- sessão da calculadora-->
         <div id="Sobre"> <!-- divisão para organização dos cards de informações para o usuario -->
             <h2>Fontes de Energia</h2>
-            <div class="container_Cards"> <!-- cards informativos  -->
+            <div class="container_Cards"> <!-- cards informativos (mediana do ciclo de vida, IPCC AR5) -->
                 <div class="card">
                     <h3>Carvão</h3>
-                    <p>Emissões: méida de 82 CO₂/kWh.</p>
+                    <p>Emissões: média de 820 g CO₂e/kWh.</p>
                 </div>
                 <div class="card">
                     <h3>Gás Natural</h3>
-                    <p>Emissões: média de 49 CO₂/kWh.</p>
+                    <p>Emissões: média de 490 g CO₂e/kWh.</p>
                 </div>
                 <div class="card">
                     <h3>Hidrelétrica</h3>
-                    <p>Emissões: média de 24 CO₂/kWh.</p>
+                    <p>Emissões: média de 24 g CO₂e/kWh.</p>
                 </div>
                 <div class="card">
                     <h3>Nuclear</h3>
-                    <p>Emissões: média de 12 CO₂/kWh.</p>
+                    <p>Emissões: média de 12 g CO₂e/kWh.</p>
                 </div>
                 <div class="card">
                     <h3>Solar</h3>
-                    <p>Emissões: média de 48 CO₂/kWh.</p>
+                    <p>Emissões: média de 48 g CO₂e/kWh.</p>
                 </div>
                 <div class="card">
                     <h3>Eólica</h3>
-                    <p>Emissões: média de 12 CO₂/kWh.</p>
+                    <p>Emissões: média de 12 g CO₂e/kWh.</p>
                 </div>
             </div>
         </div>
         <div id="calculadora"> <!-- Organização para o formulario -->
             <h1>Cálculo de Crédito de Carbono</h1>
-            <form action="/calculo" method="POST"><!-- Formulario onde vai receber deiversos inputs para envio de dados -->
-                <label for="energiaReferencia">Energia consumida anteriormente(MWh):</label><!-- titulo e referencia ao input adequado -->
-                <input type="number" name="energiaReferencia" placeholder="Energia consumida" required> <!-- recebe e transfere dados do input para o back via nome depois do submit -->
+            <form action="/calculo#calculadora" method="POST"><!-- Formulario que recebe os inputs; o #calculadora mantém o usuário nesta seção após o envio -->
+                <label for="energiaReferencia">Energia consumida anteriormente (MWh):</label><!-- titulo e referencia ao input adequado (via id) -->
+                <input type="number" id="energiaReferencia" name="energiaReferencia" step="any" min="0" placeholder="Ex: 10" required> <!-- recebe e transfere dados do input para o back via nome depois do submit -->
 
-                <label for="fatorEmissao">Fator de emissão anterior(tCO₂e/MWh):</label>
-                <input type="number" name="fatorEmissao" step="1" placeholder="Ex: 90" required>
+                <label for="fatorEmissao">Fator de emissão anterior (g CO₂e/kWh):</label>
+                <input type="number" id="fatorEmissao" name="fatorEmissao" step="any" min="0" placeholder="Ex: 820 (carvão)" required>
 
-                <label for="energiaProjeto">Energia consumida atual(MWh):</label>
-                <input type="number" name="energiaProjeto" placeholder="Energia no projeto" required>
+                <label for="energiaProjeto">Energia consumida atual (MWh):</label>
+                <input type="number" id="energiaProjeto" name="energiaProjeto" step="any" min="0" placeholder="Ex: 10" required>
 
-                <label for="fatorEmissaoProjeto">Fator de emissão atual(tCO₂e/MWh):</label>
-                <input type="number" name="fatorEmissaoProjeto" step="1" placeholder="Ex: 0 (para energia renovável)" required>
+                <label for="fatorEmissaoProjeto">Fator de emissão atual (g CO₂e/kWh):</label>
+                <input type="number" id="fatorEmissaoProjeto" name="fatorEmissaoProjeto" step="any" min="0" placeholder="Ex: 12 (eólica)" required>
 
                 <button type="submit">Calcular Crédito de Carbono</button> <!-- Envio de dados -->
             </form>
-            
-            {% if resultado is not none %} <!-- Abertura para a vinculação do html com o Flask para uso de variaveis-->
+
+            {% if erro %} <!-- Mensagem de erro enviada pelo Flask -->
+            <div class="resultado">{{ erro }}</div>
+            {% elif resultado is defined %} <!-- Só aparece depois que o formulário é enviado -->
             <div class="resultado"> <!-- div para o resultado dado após o submit dos dados -->
-                Redução de emissões: {{ resultado }} toneladas de CO₂  <!-- Aparição da variavel resultado no html -->
+                {% if resultado >= 0 %}
+                Redução de emissões: {{ resultado }} toneladas de CO₂
+                {% else %}
+                Aumento de emissões: {{ -resultado }} toneladas de CO₂
+                {% endif %}
             </div>
             {% endif %}
         </div>
@@ -121,8 +127,7 @@
     <footer style="background-color: #333; color: #fff; padding: 20px; text-align: center;">
         <p>
             Este site utiliza dados de fontes renomadas para fornecer informações precisas e atualizadas sobre fatores de emissão e pegada de carbono de diferentes fontes de energia. 
-            Baseamo-nos em diretrizes do <a href="https://pt.wikipedia.org/wiki/Fator_de_emissão#:~:text=O%20factor%20de%20emissão%20é,fontes%20de%20poluição%20do%20ar" style="color: #4caf50;">IPCC</a>, 
-            numeros de <a href="https://en.wikipedia.org/wiki/Life-cycle_greenhouse_gas_emissions_of_energy_sources" style="color: #4caf50;">Wikipedia</a>, 
+            Baseamo-nos nas medianas de emissão do ciclo de vida publicadas pelo IPCC (compiladas na <a href="https://en.wikipedia.org/wiki/Life-cycle_greenhouse_gas_emissions_of_energy_sources" style="color: #4caf50;">Wikipedia</a>),
             e <a href="https://www.iea.org/data-and-statistics/data-product/emissions-factors-2023" style="color: #4caf50;">Agência Internacional de Energia (IEA)</a>. 
             No Brasil, seguimos as orientações do <a href="https://www.gov.br/mcti/pt-br/acompanhe-o-mcti/sirene" style="color: #4caf50;">MCTI</a> 
             para garantir o alinhamento com as práticas nacionais de sustentabilidade. <!-- Algumas das fontes utilizadas -->

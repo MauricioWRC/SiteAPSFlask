@@ -198,6 +198,25 @@ header{
     transition: 0.3s;
 }
 
+/* Celular/tablet não tem hover: mostra o texto dos cards direto, com a imagem escurecida */
+@media (hover: none){
+    .Card_Info{
+        background-color: rgba(0, 0, 0, 0.5);
+        background-blend-mode: overlay;
+    }
+    .Card_Info h2{
+        display: none;
+    }
+    .Card_Info p{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #ffffff;
+        font-weight: bold;
+        line-height: 1.6;
+    }
+}
+
 @media (min-width: 800px){
     .Card_Info:hover p{
         font-size: 1.5em;
@@ -291,7 +310,7 @@ header{
 }
 #calculadora button:hover {
     transition: 0.3s;
-    background-color:#2c6e49;
+    background-color:#1e4d33;
 }
 .resultado {
     margin-top: 20px;
